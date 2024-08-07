@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+
+  --darkgray-default:#2C2C2C;
+  --darkgray-light:#3D3D3D;
+  --darkgray-lighter:#525252;
+
+  --lightgray-default:#E0E0E0;
+
+  --yellowgreen-default:#D2FF28;
+  --yellowgreen-dark: #B9E904;
+
+  lightcoral-default:#E16F7C;
+  
+}
+
+.dark-mode {
+  --background-color: var(--darkgray-default);
+  --text-color: var(--lightgray-default);
+  --card-background-color: var(--darkgray-light);
+}
+
+.light-mode {
+  --background-color: white;
+  --text-color: var(--darkgray-default);
+  --card-background-color: white;
+}
+
