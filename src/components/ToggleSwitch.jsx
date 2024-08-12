@@ -1,6 +1,6 @@
 import React from 'react';
-import { useTheme } from './ThemeContext';
-import { ToggleSwitchRegular, ToggleSwitchDarkMode } from './assets/Icons';
+import { useTheme } from '../ThemeContext';
+import { ToggleSwitchRegular, ToggleSwitchDarkMode } from './Icons';
 
 
 const ToggleSwitch = () => {
@@ -9,7 +9,7 @@ const ToggleSwitch = () => {
 
   return (
     <div onClick={toggleTheme} className="cursor-pointer p-2">
-      {darkMode ? <ToggleSwitchRegular /> : <ToggleSwitchDarkMode />}
+      {darkMode ?  <ToggleSwitchDarkMode /> : <ToggleSwitchRegular />}
     </div>
   );
 };

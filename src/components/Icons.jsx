@@ -107,9 +107,9 @@ export function ToggleSwitchRegular() {
           width="82"
           height="43"
           filterUnits="userSpaceOnUse"
-          color-interpolation-filters="sRGB"
+          colorInterpolationFilters="sRGB"
         >
-          <feFlood flood-opacity="0" result="BackgroundImageFix" />
+          <feFlood floodOpacity="0" result="BackgroundImageFix" />
           <feColorMatrix
             in="SourceAlpha"
             type="matrix"
@@ -433,8 +433,8 @@ export function SearchIcon() {
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M37 21C37 29.8366 29.8366 37 21 37C12.1634 37 5 29.8366 5 21C5 12.1634 12.1634 5 21 5C29.8366 5 37 12.1634 37 21ZM31.7791 39.0262C28.6281 40.9145 24.9408 42 21 42C9.40202 42 0 32.598 0 21C0 9.40202 9.40202 0 21 0C32.598 0 42 9.40202 42 21C42 26.4953 39.8892 31.4976 36.4342 35.2404L44.3426 45.1259C45.3776 46.4197 45.1679 48.3076 43.8741 49.3426C42.5803 50.3776 40.6924 50.1679 39.6574 48.8741L31.7791 39.0262Z"
         fill="black"
       />

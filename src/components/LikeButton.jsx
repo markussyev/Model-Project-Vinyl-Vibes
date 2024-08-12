@@ -5,8 +5,8 @@ import {
   LikeIconActive,
   LikeIconDarkMode,
   LikeIconActiveDarkMode,
-} from './assets/Icons';
-import { useTheme } from './ThemeContext';
+} from './Icons';
+import { useTheme } from '../ThemeContext';
 
 const icons = {
     LikeIconRegular,

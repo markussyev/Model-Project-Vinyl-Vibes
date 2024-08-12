@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { useTheme } from "./ThemeContext";
-import { CollectionAddIcon, CollectionRemoveIcon, WishListAddIcon, WishListRemoveIcon } from "./assets/Icons";
+import { useTheme } from "../ThemeContext";
+import { CollectionAddIcon, CollectionRemoveIcon, WishListAddIcon, WishListRemoveIcon } from "./Icons";
 
 const AlbumCard = ({
   albumName,
@@ -34,7 +34,7 @@ const AlbumCard = ({
   };
 
   return (
-    <div className="album-card relative flex flex-col items-center w-64 h-96  rounded-xl bg-white drop-shadow-lg text-darkgray-default dark:bg-darkgray-light dark:text-lightgray-default">
+    <div className="album-card relative flex flex-col items-center w-64 h-96 p-5 rounded-xl bg-white drop-shadow-lg text-darkgray-default dark:bg-darkgray-light dark:text-lightgray-default">
       <img
         src={imgUrl}
         alt={`${albumName} cover`}

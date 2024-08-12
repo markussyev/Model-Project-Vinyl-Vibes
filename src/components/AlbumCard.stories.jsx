@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import AlbumCard from './AlbumCard';
-import { ThemeProvider, useTheme } from './ThemeContext';
+import { ThemeProvider, useTheme } from '../ThemeContext';
 
 export default {
     title: 'Vinyl-Vibes/AlbumCard',
@@ -48,7 +48,7 @@ const Template = (args) => {
 
 export const Regular = Template.bind({});
 Regular.args = {
-    imgUrl: 'https://i.scdn.co/image/ab67616d0000b273b0a1d1f0b1d5b9d0e2b5b0a7',
+    imgUrl: 'https://i.scdn.co/image/ab67616d0000b2735c9890c0456a3719eeecd8aa',
     albumName: 'The Fame Monster',
     artistTitle: 'Lady Gaga',
     year: '2009',
@@ -96,7 +96,7 @@ InCollectionAndWishlist.args = {
 
 export const DarkMode = Template.bind({});
 DarkMode.args = {
-    imgUrl: 'https://i.scdn.co/image/ab67616d0000b273b0a1d1f0b1d5b9d0e2b5b0a7',
+    imgUrl: 'https://i.scdn.co/image/ab67616d0000b2735c9890c0456a3719eeecd8aa',
     albumName: 'The Fame Monster',
     artistTitle: 'Lady Gaga',
     year: '2009',

@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./ArtistCard.css";
-import { useTheme } from './ThemeContext';
+import { useTheme } from '../ThemeContext';
 import LikeButton from "./LikeButton";
 
 const ArtistCard = ({ imgUrl, artistTitle, liked, setLiked }) => {
@@ -10,7 +9,7 @@ const ArtistCard = ({ imgUrl, artistTitle, liked, setLiked }) => {
 
   return (
     <div
-      className="static artist-card w-60 h-72 flex flex-col content-between items-center space-y-6 rounded-xl bg-white drop-shadow-lg dark:bg-darkgray-light text-lightgray-default">
+      className="static artist-card w-60 h-72 p-5 flex flex-col content-between items-center space-y-6 rounded-xl bg-white drop-shadow-lg dark:bg-darkgray-light text-lightgray-default">
       <div className="absolute self-end p-2">
       <LikeButton liked={liked} setLiked={setLiked} />
       </div>

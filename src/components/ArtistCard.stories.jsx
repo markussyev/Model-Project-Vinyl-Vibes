@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ArtistCard from "./ArtistCard";
-import { ThemeProvider, useTheme } from './ThemeContext';
+import { ThemeProvider, useTheme } from '../ThemeContext';
 
 export default {
     title: 'Vinyl-Vibes/ArtistCard',
@@ -32,11 +32,11 @@ export default {
 const Template = (args) => {
     const [liked, setLiked] = useState(args.liked);
     const { darkMode, toggleTheme } = useTheme();
-    useEffect(() => {
-        if (args.darkMode !== darkMode) {
-          toggleTheme();
-        }
-      }, [args.darkMode, darkMode, toggleTheme]);
+     useEffect(() => {
+         if (args.darkMode !== darkMode) {
+           toggleTheme();
+         }
+       }, [args.darkMode, darkMode, toggleTheme]);
     
       return <ArtistCard {...args} liked={liked} setLiked={setLiked} />;
     };
@@ -53,7 +53,7 @@ Regular.args = {
 }
 
 export const RegularLiked = Template.bind({});
-Regular.args = {
+RegularLiked.args = {
     imgUrl: 'https://i.scdn.co/image/ab6775700000ee85a7982cc7658ff06926b3a2b9',
     liked: true,
     artistTitle: 'Rihanna',
