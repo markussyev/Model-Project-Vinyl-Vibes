@@ -1,18 +1,37 @@
 import React from "react";
-import  AlbumCard from "./AlbumCard";
-import ArtistCard  from "./ArtistCard";
+import AlbumCard from "./AlbumCard";
+import ArtistCard from "./ArtistCard";
 
-export const SearchResult = ({ result }) => {
-  return result.type === "album" ? (
-    < AlbumCard 
-    albumName={result.name}
-    artistName={result.artist}
-    imgUrl={result.imageUrl}
-    /> ) : (
-      < ArtistCard 
-      artistName={result.name}
-      imgUrl={result.imageUrl}
+const SearchResult = ({
+  result,
+  onAddToCollection,
+  onAddToWishlist,
+  onSetLiked,
+}) => {
+  if (result.type === "album") {
+    return (
+      <AlbumCard
+        albumName={result.albumName}
+        artistTitle={result.artistTitle}
+        imgUrl={result.imageUrl}
+        year={result.year}
+        genre={result.genre}
+        inCollection={result.inCollection}
+        inWishlist={result.inWishlist}
+        onAddToCollection={() => onAddToCollection(result.albumId)}
+        onAddToWishlist={() => onAddToWishlist(result.albumId)}
       />
-    ) };
+    );
+  } else if (result.type === "artist") {
+    return (
+      <ArtistCard
+        artistTitle={result.artistTitle}
+        imgUrl={result.imageUrl}
+        liked={result.liked}
+        setLiked={ () => onSetLiked(result.artistId)}
+      />
+    );
+  }
+};
 
-    export default SearchResult;
+export default SearchResult;

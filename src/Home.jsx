@@ -14,8 +14,6 @@ const [results, setResults] = useState([])
        
             <div className="bg-white dark:bg-darkgray-default">
                 <h1>HI This is Home</h1>
-                <SearchBar setResults={setResults} />
-                < SearchResultList results={results} /> 
             </div>
     
     )

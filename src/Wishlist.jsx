@@ -1,14 +1,26 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
+import AlbumCard from "./components/AlbumCard";
 
-function Wishlist () {
-    return (
-       
-            <div>
-                <h1>HI This is Wishlist</h1>
-               
-            </div>
-    
-    )
+function Wishlist({ wishlist, albums }) {
+  return (
+    <div>
+      <h1>Wishlist</h1>
+      {albums
+        .filter((album) => wishlist.includes(album.id))
+        .map((album, id) => (
+          <AlbumCard
+            key={id}
+            albumName={album.name}
+            artistTitle={album.artist}
+            imgUrl={album.imageUrl}
+            year={album.year}
+            genre={album.genre}
+            inCollection={false}
+            inWishlist={true}
+          />
+        ))}
+    </div>
+  );
 }
 
-export default Wishlist
+export default Wishlist;

@@ -9,8 +9,8 @@ const ArtistCard = ({ imgUrl, artistTitle, liked, setLiked }) => {
 
   return (
     <div
-      className="static artist-card w-60 h-72 p-5 flex flex-col content-between items-center space-y-6 rounded-xl bg-white drop-shadow-lg dark:bg-darkgray-light text-lightgray-default">
-      <div className="absolute self-end p-2">
+      className="static artist-card w-60 h-82 p-5 flex flex-col content-between items-center space-y-6 rounded-xl bg-white drop-shadow-lg dark:bg-darkgray-light text-lightgray-default">
+      <div className="absolute self-end">
       <LikeButton liked={liked} setLiked={setLiked} />
       </div>
       <img
@@ -27,7 +27,6 @@ const ArtistCard = ({ imgUrl, artistTitle, liked, setLiked }) => {
   );
 };
 
-export default ArtistCard;
 
 ArtistCard.propTypes = {
   imgUrl: PropTypes.string.isRequired,
@@ -40,3 +39,5 @@ ArtistCard.defaultProps = {
   liked: false,
   setLiked: () => {},
 };
+
+export default ArtistCard;

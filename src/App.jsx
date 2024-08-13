@@ -1,3 +1,4 @@
+import React, {useState} from 'react'
 import './App.css'
 import {Switch, Route} from 'wouter'
 import { ThemeProvider } from './ThemeContext'
@@ -13,16 +14,22 @@ import TopBar from './components/TopBar'
 
 function App() {
 
-  
+  const [collection, setCollection] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   return (
     <ThemeProvider>
-      <div className='flex'>
+      <div className='flex h-screen'>
     
       <div className=''> <NavigationMenu /> </div>
-      <div className='flex flec-col w-screen bg-white dark:bg-darkgray-default'>
-       <div className='p-2'><TopBar/></div> 
-       <div>
+      <div className='flex flec-col flex-grow bg-white dark:bg-darkgray-default'>
+       <div className='p-2'><TopBar
+       setCollection={setCollection}
+       setWishlist={setWishlist}
+       setFavorites={setFavorites}
+       /></div> 
+       <div >
    <Switch>
       <Route path="/Home">
         <Home />

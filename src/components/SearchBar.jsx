@@ -6,33 +6,36 @@ const SearchBar = ({setResults}) => {
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
-    // fetch(
-    //   "https://jsonplaceholder.typicode.com/users"
-    // )
-    //   .then((response) => response.json())
-    //   .then((json) => {
-    //     const results = json.filter((user) => {
-    //         return value && user && user.name.toLowerCase().includes(value);
-    //     })
-    //     setResults(results)
-    //   })
-    fetch(`https://ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=${import.meta.env.VITE_FMKEY}&format=json`, {
-      method: 'GET', headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-      }
-  })
-      .then((response) => response.json()).then((json) => {
-        console.log(json);
-        const albumResults = json.results.albummatches.album.map(album => ({
+
+    const albumUrl = `https://ws.audioscrobbler.com/2.0/?method=album.search&album=${value}&api_key=${import.meta.env.VITE_FMKEY}&format=json`;
+    const artistUrl = `https://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${value}&api_key=${import.meta.env.VITE_FMKEY}&format=json`;
+    
+    Promise.all([
+      fetch(albumUrl).then(response=> response.json()), 
+      fetch(artistUrl).then(response=> response.json())]).then(([albumData, artistData]) => {
+        const albums = albumData.results.albummatches.album || [];
+        const artists = artistData.results.artistmatches.artist || [];
+        const results = [...albums.map(album => ({
+          type: 'album',
           albumName: album.name,
-          artistName: album.artist,
-          imgUrl: album.image[2]['#text'],
+          artistTitle: album.artist,
+          imageUrl: album.image[2]['#text'],
+          year: '',
+          genre: '',
           inCollection: false,
           inWishlist: false,
-          }
-        ));
-        setResults(albumResults);
+        })), 
+        ...artists.map(artist => ({
+          type: 'artist',
+          artistTitle: artist.name,
+          imageUrl: artist.image[2]['#text'],
+        }))
+      ];
+        
+      
+        setResults(results);
+      }).catch((error) => {
+        console.error('Error:', error);
       });
   };
 

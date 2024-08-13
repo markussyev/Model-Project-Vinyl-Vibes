@@ -11,6 +11,8 @@ const AlbumCard = ({
   imgUrl,
   inCollection,
   inWishlist,
+  onAddToCollection,
+  onAddToWishlist,
 }) => {
   const { darkMode, themeStyles } = useTheme();
 
@@ -19,18 +21,22 @@ const AlbumCard = ({
 
   const handleAddToCollection = () => {
     setIsInCollection(true);
+    if (onAddToCollection) onAddToCollection();
   };
 
   const handleRemoveFromCollection = () => {
     setIsInCollection(false);
+    if (onAddToCollection) onAddToCollection();
   };
 
   const handleAddToWishlist = () => {
     setIsInWishlist(true);
+    if (onAddToWishlist) onAddToWishlist();
   };
 
   const handleRemoveFromWishlist = () => {
     setIsInWishlist(false);
+    if (onAddToWishlist) onAddToWishlist();
   };
 
   return (
@@ -77,14 +83,17 @@ const AlbumCard = ({
   );
 };
 
-export default AlbumCard;
 
 AlbumCard.propTypes = {
   albumName: PropTypes.string.isRequired,
   artistTitle: PropTypes.string.isRequired,
-  year: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  year: PropTypes.string,
+  genre: PropTypes.string,
   imgUrl: PropTypes.string.isRequired,
   inCollection: PropTypes.bool,
   inWishlist: PropTypes.bool,
+  onAddToCollection: PropTypes.func,
+  onAddToWishlist: PropTypes.func,
 };
+
+export default AlbumCard;
