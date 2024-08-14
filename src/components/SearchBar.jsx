@@ -3,6 +3,7 @@ import { SearchIcon } from "./Icons";
 import { useDebouncedCallback } from 'use-debounce';
 
 const SearchBar = ({setResults}) => {
+
   const [input, setInput] = useState("");
 
   const fetchData = (value) => {
@@ -56,11 +57,12 @@ const SearchBar = ({setResults}) => {
         <SearchIcon />
       </div>
       <input
-        className="border-none focus:outline-none h-full bg-transparent ml-5 "
+        className="border-none focus:outline-none h-full bg-transparent ml-5 dark:text-lightgray-default "
         placeholder="Search for Vinyls..."
         value={input}
         onChange={(event) => handleChange(event.target.value)}
       />
+      
     </div>
     </div>
   );

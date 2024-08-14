@@ -3,8 +3,11 @@ import AlbumCard from "./components/AlbumCard";
 
 function Wishlist({ wishlist, albums }) {
   return (
-    <div>
-      <h1>Wishlist</h1>
+    <div className="flex mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default">
+      <div className="flex gap-10">
+        <h1 className="text-8xl text-lightcoral-default">My</h1>
+        <h1 className="text-8xl dark:text-lightgray-default">Wishlist</h1>
+        </div>
       {albums
         .filter((album) => wishlist.includes(album.id))
         .map((album, id) => (

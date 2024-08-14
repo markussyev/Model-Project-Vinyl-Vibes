@@ -48,8 +48,8 @@ const AlbumCard = ({
       />
       <div className="album-card-content flex flex-col space-y-20 mt-36">
         <div>
-          <h3 className="album-title  text-2xl font-bold ">{albumName}</h3>
-        <h6 className="artist-title font-medium">{artistTitle}</h6>
+          <h3 className="album-title  text-xl font-bold ">{albumName}</h3>
+        <h6 className="artist-title text-sm font-medium">{artistTitle}</h6>
         <p>{year}</p>
         <p>{genre}</p>
         </div>
