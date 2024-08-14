@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { SearchIcon } from "./Icons";
 import { useDebouncedCallback } from 'use-debounce';
+import { SearchIcon } from "./Icons";
 
 const SearchBar = ({setResults}) => {
 
@@ -23,12 +23,14 @@ const SearchBar = ({setResults}) => {
           imageUrl: album.image[2]['#text'],
           year: '',
           genre: '',
+          mbid: album.mbid,
           inCollection: false,
           inWishlist: false,
         })), 
         ...artists.map(artist => ({
           type: 'artist',
           artistTitle: artist.name,
+          mbid: artist.mbid,
           imageUrl: artist.image[2]['#text'],
         }))
       ];

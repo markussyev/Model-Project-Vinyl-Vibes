@@ -12,7 +12,7 @@ export const SearchResultList = ({ results, onAddToCollection, onAddToWishlist, 
             <SearchResult 
             result={result} 
             key={id} 
-            onAddToCollection={onAddToCollection}
+            onAddToCollection={(result) => onAddToCollection(result)}
             onAddToWishlist={onAddToWishlist}
              />
           ))}
