@@ -15,20 +15,20 @@ const icons = {
     LikeIconActiveDarkMode,
   };
 
-  const LikeButton = ({ liked, setLiked }) => {
+  const LikeButton = ({ liked, handleLikeClick }) => {
     const { themeStyles } = useTheme();
   
-    const handleLikeClick = () => {
-      setLiked(!liked);
-    };
+    // const handleLikeClick = () => {
+    //   setLiked(!liked);
+    // };
   
     const LikeIcon = icons[themeStyles.likeIcon];
     const LikeIconActive = icons[themeStyles.likeIconActive];
   
     return (
-      <div onClick={handleLikeClick}>
+      <span className="cursor-pointer" onClick={handleLikeClick}>
         {liked ? <LikeIconActive /> : <LikeIcon />}
-      </div>
+      </span>
     );
   };
   

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import './App.css'
 import {Switch, Route} from 'wouter'
 import { ThemeProvider } from './ThemeContext'
@@ -20,6 +20,23 @@ function App() {
   const [collection, setCollection] = useState([]);
   const [wishlist, setWishlist] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  
+  useEffect(() => {
+    const savedCollection = JSON.parse(localStorage.getItem('collection')) || [];
+    const savedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    setCollection(savedCollection);
+    setWishlist(savedWishlist);
+    setFavorites(savedFavorites);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('collection', JSON.stringify(collection));
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [collection, wishlist, favorites]);
+
 
   return (
     <ThemeProvider>
@@ -27,11 +44,13 @@ function App() {
     
       <div className='fixed h-full'> <NavigationMenu /> </div>
       <div className='flex-1 flec-col ml-64'>
-       <div className='p-2 z-30'><TopBar
+       <div className='relative p-2 z-50'>
+        <TopBar
        setCollection={setCollection}
        setWishlist={setWishlist}
        setFavorites={setFavorites}
-       /></div> 
+       />
+       </div> 
        <main className='flex-1 p-4 overflow-y-auto' >
    <Switch>
       <Route path="/Home">

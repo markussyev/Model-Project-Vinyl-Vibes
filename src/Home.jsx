@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 function Home() {
   return (
-    <div className=" flex mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default ">
+    <div className=" flex mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default z-20">
       <div className="flex flex-col w-1/3 items-center z-10">
         <h1 className="text-8xl dark:text-lightgray-default">HELLO</h1>
         <h2 className="text-4xl text-lightcoral-default pb-20 ">Vinyl Lover!</h2>

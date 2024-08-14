@@ -1,7 +1,18 @@
 import React, { useState } from "react";
 import ArtistCard from "./components/ArtistCard";
 
-function Favorites({ favorites, artists }) {
+function Favorites({ favorites, setFavorites, artists }) {
+
+  const handleSetLiked = (artist) => {
+    setFavorites((prevFavorites) => {
+    if (prevFavorites.includes(artist.id)) {
+      return prevFavorites.filter((id) => id !== artist.id);
+    } else {
+      return [...prevFavorites, artist.id];
+    }
+  });
+};
+
   return (
     <div className="flex mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default">
      <div className="flex gap-10">
@@ -15,8 +26,8 @@ function Favorites({ favorites, artists }) {
             key={id}
             artistTitle={artist.name}
             imgUrl={artist.imageUrl}
-            liked={true}
-            setLiked={() => {}}
+            liked={favorites.includes(artist.id)}
+            handleSetLiked={() => handleSetLiked(artist)}
           />
         ))}
     </div>

@@ -18,8 +18,8 @@ const SearchResult = ({
         genre={result.genre}
         inCollection={result.inCollection}
         inWishlist={result.inWishlist}
-        onAddToCollection={() => onAddToCollection(result.albumId)}
-        onAddToWishlist={() => onAddToWishlist(result.albumId)}
+        onAddToCollection={() => onAddToCollection(result)}
+        onAddToWishlist={() => onAddToWishlist(result)}
       />
     );
   } else if (result.type === "artist") {
@@ -28,7 +28,7 @@ const SearchResult = ({
         artistTitle={result.artistTitle}
         imgUrl={result.imageUrl}
         liked={result.liked}
-        setLiked={ () => onSetLiked(result.artistId)}
+        setLiked={() => onSetLiked(result)}
       />
     );
   }

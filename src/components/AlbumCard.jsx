@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTheme } from "../ThemeContext";
-import { CollectionAddIcon, CollectionRemoveIcon, WishListAddIcon, WishListRemoveIcon } from "./Icons";
+import {
+  CollectionAddIcon,
+  CollectionRemoveIcon,
+  WishListAddIcon,
+  WishListRemoveIcon,
+} from "./Icons";
 
 const AlbumCard = ({
   albumName,
@@ -49,40 +54,38 @@ const AlbumCard = ({
       <div className="album-card-content flex flex-col space-y-20 mt-36">
         <div>
           <h3 className="album-title  text-xl font-bold ">{albumName}</h3>
-        <h6 className="artist-title text-sm font-medium">{artistTitle}</h6>
-        <p>{year}</p>
-        <p>{genre}</p>
+          <h6 className="artist-title text-sm font-medium">{artistTitle}</h6>
+          <p>{year}</p>
+          <p>{genre}</p>
         </div>
-      
-      <div className="album-card-icons flex self-end">
-        {!isInCollection ? (
-          <CollectionAddIcon
-            onClick={handleAddToCollection}
-            title="Add to My Collection"
-          />
-        ) : (
-          <CollectionRemoveIcon
-            onClick={handleRemoveFromCollection}
-            title="Remove from My Collection"
-          />
-        )}
-        {!isInWishlist ? (
-          <WishListAddIcon
-            onClick={handleAddToWishlist}
-            title="Add to My Wishlist"
-          />
-        ) : (
-          <WishListRemoveIcon
-            onClick={handleRemoveFromWishlist}
-            title="Remove from My Wishlist"
-          />
-        )}
-      </div>
+
+        <div className="album-card-icons flex self-end">
+          {!isInCollection ? (
+            <span className="cursor-pointer" onClick={handleAddToCollection}>
+              <CollectionAddIcon title="Add to My Collection" />
+            </span>
+          ) : (
+            <span
+              className="cursor-pointer"
+              onClick={handleRemoveFromCollection}
+            >
+              <CollectionRemoveIcon title="Remove from My Collection" />
+            </span>
+          )}
+          {!isInWishlist ? (
+            <span className="cursor-pointer" onClick={handleAddToWishlist}>
+              <WishListAddIcon title="Add to My Wishlist" />
+            </span>
+          ) : (
+            <span className="cursor-pointer" onClick={handleRemoveFromWishlist}>
+              <WishListRemoveIcon title="Remove from My Wishlist" />
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
 };
-
 
 AlbumCard.propTypes = {
   albumName: PropTypes.string.isRequired,

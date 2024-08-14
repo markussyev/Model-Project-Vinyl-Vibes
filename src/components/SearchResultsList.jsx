@@ -12,8 +12,8 @@ export const SearchResultList = ({ results, onAddToCollection, onAddToWishlist, 
             <SearchResult 
             result={result} 
             key={id} 
-            onAddToCollection={onAddToCollection}
-            onAddToWishlist={onAddToWishlist}
+            onAddToCollection={(result) => onAddToCollection(result)}
+            onAddToWishlist={(result) => onAddToWishlist(result)}
              />
           ))}
       </div>

@@ -3,12 +3,19 @@ import { useTheme } from "../ThemeContext";
 import SearchBar from "./SearchBar";
 import SearchResultList from "./SearchResultsList";
 
-const TopBar = ({ setCollection, setWishlist, setFavorites, user, onSignOut, onEditProfile }) => {
+const TopBar = ({
+  setCollection,
+  setWishlist,
+  setFavorites,
+  user,
+  onSignOut,
+  onEditProfile,
+}) => {
   const { darkMode, themeStyles } = useTheme();
   const [results, setResults] = useState([]);
   const [showResults, setShowResults] = useState(false);
   // const [collection, setCollection] = useState([]);
-  // const [wishlist, setWishlist] = useState([]); 
+  // const [wishlist, setWishlist] = useState([]);
   // const [favorites, setFavorites] = useState([]);
   const resultsRef = useRef(null);
 
@@ -17,36 +24,35 @@ const TopBar = ({ setCollection, setWishlist, setFavorites, user, onSignOut, onE
     setShowResults(true);
   };
 
-  const handleAddToCollection = (albumId) => {
+  const handleAddToCollection = (album) => {
     setCollection((prevCollection) => {
-      if (prevCollection.includes(albumId)) {
-        return prevCollection.filter((id) => id !== albumId);
+      if (prevCollection.includes(album)) {
+        return prevCollection.filter((prevAlbum) => prevAlbum.mbid !== album.mbid);
       } else {
-        return [...prevCollection, albumId];
+        return [...prevCollection, album];
       }
     });
   };
 
-    const handleAddToWishlist = (albumId) => {
-      setWishlist((prevWishlist) => {
-        if (prevWishlist.includes(albumId)) {
-          return prevWishlist.filter((id) => id !== albumId);
-        } else {
-          return [...prevWishlist, albumId];
-        }
-      });
-    };
+  const handleAddToWishlist = (album) => {
+    setWishlist((prevWishlist) => {
+      if (prevWishlist.includes(album)) {
+        return prevWishlist.filter((prevAlbum) => prevAlbum.mbid !== album.mbid);
+      } else {
+        return [...prevWishlist, album];
+      }
+    });
+  };
 
-    const handleSetLiked = (artistId) => {
-setFavorites((prevFavorites) => {
-  if (prevFavorites.includes(artistId)) {
-    return prevFavorites.filter((id) => id !== artistId);
-  } else {
-    return [...prevFavorites, artistId];
-    };
-  });
-};
-
+  const handleSetLiked = (artist) => {
+    setFavorites((prevFavorites) => {
+      if (prevFavorites.includes(artist)) {
+        return prevFavorites.filter((prevArtist) => prevArtist.mbid !== artist.mbid);
+      } else {
+        return [...prevFavorites, artist];
+      }
+    });
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -69,12 +75,13 @@ setFavorites((prevFavorites) => {
         {showResults && results.length > 0 && (
           <div
             ref={resultsRef}
-            className="results-dropdown flex absolute top-full left-0 w-4/5 shadow-lg bg-white  dark:bg-darkgray-default border border-darkgray-lighter rounded-lg overflow-y-auto z-30 "
+            className="results-dropdown flex absolute top-full left-0 w-4/5 shadow-lg bg-white  dark:bg-darkgray-default border border-darkgray-lighter rounded-lg overflow-y-auto z-40 "
           >
-            <SearchResultList results={results}
-            onAddToCollection={handleAddToCollection}
-            onAddToWishlist={handleAddToWishlist}
-            onSetLiked={handleSetLiked}
+            <SearchResultList
+              results={results}
+              onAddToCollection={handleAddToCollection}
+              onAddToWishlist={handleAddToWishlist}
+              onSetLiked={handleSetLiked}
             />
           </div>
         )}
