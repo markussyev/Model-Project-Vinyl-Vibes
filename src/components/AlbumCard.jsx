@@ -17,7 +17,9 @@ const AlbumCard = ({
   inCollection,
   inWishlist,
   onAddToCollection,
+  onRemoveFromCollection,
   onAddToWishlist,
+  onRemoveFromWishlist,
 }) => {
   const { darkMode, themeStyles } = useTheme();
 
@@ -31,7 +33,7 @@ const AlbumCard = ({
 
   const handleRemoveFromCollection = () => {
     setIsInCollection(false);
-    if (onAddToCollection) onAddToCollection();
+    if (onRemoveFromCollection) onRemoveFromCollection();
   };
 
   const handleAddToWishlist = () => {
@@ -41,11 +43,11 @@ const AlbumCard = ({
 
   const handleRemoveFromWishlist = () => {
     setIsInWishlist(false);
-    if (onAddToWishlist) onAddToWishlist();
+    if (onRemoveFromWishlist) onRemoveFromWishlist();
   };
 
   return (
-    <div className="album-card relative flex flex-col items-center w-64 h-96 p-5 rounded-xl bg-white drop-shadow-lg text-darkgray-default dark:bg-darkgray-light dark:text-lightgray-default">
+    <div className="album-card relative flex flex-col items-center w-64 h-96 p-5 mb-20 rounded-xl bg-white drop-shadow-lg text-darkgray-default dark:bg-darkgray-light dark:text-lightgray-default">
       <img
         src={imgUrl}
         alt={`${albumName} cover`}
@@ -97,6 +99,8 @@ AlbumCard.propTypes = {
   inWishlist: PropTypes.bool,
   onAddToCollection: PropTypes.func,
   onAddToWishlist: PropTypes.func,
+  onRemoveFromCollection: PropTypes.func,
+  onRemoveFromWishlist: PropTypes.func,
 };
 
 export default AlbumCard;

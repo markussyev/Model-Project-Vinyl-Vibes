@@ -5,7 +5,9 @@ import ArtistCard from "./ArtistCard";
 const SearchResult = ({
   result,
   onAddToCollection,
+  onRemoveFromCollection,
   onAddToWishlist,
+  onRemoveFromWishlist,
   onSetLiked,
 }) => {
   if (result.type === "album") {
@@ -19,7 +21,9 @@ const SearchResult = ({
         inCollection={result.inCollection}
         inWishlist={result.inWishlist}
         onAddToCollection={() => onAddToCollection(result)}
+        onRemoveFromCollection={() => onRemoveFromCollection(result)}
         onAddToWishlist={() => onAddToWishlist(result)}
+        onRemoveFromWishlist={() => onRemoveFromWishlist(result)}
       />
     );
   } else if (result.type === "artist") {
@@ -28,7 +32,7 @@ const SearchResult = ({
         artistTitle={result.artistTitle}
         imgUrl={result.imageUrl}
         liked={result.liked}
-        setLiked={() => onSetLiked(result)}
+        handleSetLiked={() => onSetLiked(result)}
       />
     );
   }

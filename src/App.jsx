@@ -51,7 +51,7 @@ function App() {
        setFavorites={setFavorites}
        />
        </div> 
-       <main className='flex-1 p-4 overflow-y-auto' >
+       <main className='flex-1 h-full bg-white dark:bg-darkgray-default p-4 overflow-y-auto' >
    <Switch>
       <Route path="/Home">
         <Home />

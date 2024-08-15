@@ -34,6 +34,12 @@ const TopBar = ({
     });
   };
 
+  const handleRemoveFromCollection = (album) => {
+    setCollection((prevCollection) => {
+      return prevCollection.filter((prevAlbum) => prevAlbum.mbid !== album.mbid);
+    });
+  };
+
   const handleAddToWishlist = (album) => {
     setWishlist((prevWishlist) => {
       if (prevWishlist.includes(album)) {
@@ -43,6 +49,12 @@ const TopBar = ({
       }
     });
   };
+
+const handleRemoveFromWishlist = (album) => {
+  setWishlist((prevWishlist) => {
+    return prevWishlist.filter((prevAlbum) => prevAlbum.mbid !== album.mbid);
+  });
+};
 
   const handleSetLiked = (artist) => {
     setFavorites((prevFavorites) => {
@@ -80,7 +92,9 @@ const TopBar = ({
             <SearchResultList
               results={results}
               onAddToCollection={handleAddToCollection}
+              onRemoveFromCollection={handleRemoveFromCollection}
               onAddToWishlist={handleAddToWishlist}
+              onRemoveFromWishlist={handleRemoveFromWishlist}
               onSetLiked={handleSetLiked}
             />
           </div>

@@ -16,7 +16,7 @@ const NavigationMenu = () => {
   const activeClass = themeStyles.classActive;
 
   return (
-    <div className=" h-screen w-max flex flex-col justify-between p-5 bg-zinc-200 dark:bg-darkgray-default">
+    <div className=" h-screen w-max flex flex-col justify-between p-5 bg-seasalt-default dark:bg-darkgray-default">
       <div className="logo flex item-center m-5 mb-10">
         <Link href="#">{darkMode ? <LogoDarkMode /> : <LogoRegular />}</Link>
       </div>

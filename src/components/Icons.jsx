@@ -474,7 +474,7 @@ export function LogoDarkMode() {
   return (
     <svg
       width="118"
-      height="8o"
+      height="80"
       viewBox="0 0 123 85"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

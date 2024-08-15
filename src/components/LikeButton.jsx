@@ -34,7 +34,7 @@ const icons = {
   
   LikeButton.propTypes = {
     liked: PropTypes.bool.isRequired,
-    setLiked: PropTypes.func.isRequired,
+    handleLikeClick: PropTypes.func.isRequired,
   };
   
   export default LikeButton;

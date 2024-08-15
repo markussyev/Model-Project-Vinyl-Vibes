@@ -24,6 +24,9 @@ export default {
       lightgray: {
         default: '#E0E0E0',
       },
+      seasalt: {
+        default: '#FAFAFA',
+      },
       lightcoral: {
         default: '#E16F7C',
       },
