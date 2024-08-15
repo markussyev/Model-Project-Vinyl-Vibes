@@ -1,6 +1,7 @@
-import React from "react";
-import AlbumCard from "./AlbumCard";
-import ArtistCard from "./ArtistCard";
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
+import AlbumCard from './AlbumCard';
+import ArtistCard from './ArtistCard';
 
 const SearchResult = ({
   result,
@@ -10,7 +11,9 @@ const SearchResult = ({
   onRemoveFromWishlist,
   onSetLiked,
 }) => {
-  if (result.type === "album") {
+  //create our ids cause the API is inconsistent
+  result.mbid = uuidv4();
+  if (result.type === 'album') {
     return (
       <AlbumCard
         albumName={result.albumName}
@@ -26,7 +29,7 @@ const SearchResult = ({
         onRemoveFromWishlist={() => onRemoveFromWishlist(result)}
       />
     );
-  } else if (result.type === "artist") {
+  } else if (result.type === 'artist') {
     return (
       <ArtistCard
         artistTitle={result.artistTitle}
