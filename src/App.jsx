@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { Route, Switch } from 'wouter';
-import './App.css';
-import Collection from './Collection';
-import Favorites from './Favorites';
-import Home from './Home';
-import { ThemeProvider } from './ThemeContext';
-import Wishlist from './Wishlist';
-import NavigationMenu from './components/NavigationMenu';
-import TopBar from './components/TopBar';
+import React, { useEffect, useState } from "react";
+import { Route, Switch } from "wouter";
+import "./App.css";
+import Collection from "./Collection";
+import Favorites from "./Favorites";
+import Home from "./Home";
+import { ThemeProvider } from "./ThemeContext";
+import Wishlist from "./Wishlist";
+import NavigationMenu from "./components/NavigationMenu";
+import TopBar from "./components/TopBar";
 
 function App() {
   const [albums, setAlbums] = useState([]);
@@ -18,9 +18,10 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    const savedCollection = JSON.parse(localStorage.getItem('collection')) || [];
-    const savedWishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-    const savedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    const savedCollection =
+      JSON.parse(localStorage.getItem("collection")) || [];
+    const savedWishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+    const savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
 
     setCollection(savedCollection);
     setWishlist(savedWishlist);
@@ -28,50 +29,62 @@ function App() {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('collection', JSON.stringify(collection));
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    localStorage.setItem('favorites', JSON.stringify(favorites));
+    localStorage.setItem("collection", JSON.stringify(collection));
+    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+    localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [collection, wishlist, favorites]);
 
   const onRemoveFromCollection = (album) => {
     // remove the album from the localStorage
-    let oldCollection = JSON.parse(localStorage.getItem('collection'));
+    let oldCollection = JSON.parse(localStorage.getItem("collection"));
     let newCollection = oldCollection.filter((al) => al.mbid !== album.mbid);
-    localStorage.setItem('collection', JSON.stringify(newCollection));
+    localStorage.setItem("collection", JSON.stringify(newCollection));
     setCollection(newCollection);
+  };
+
+  const onRemoveFromWishlist = (album) => {
+    // remove the album from the localStorage
+    let oldWishlist = JSON.parse(localStorage.getItem("wishlist"));
+    let newWishlist = oldWishlist.filter((al) => al.mbid !== album.mbid);
+    localStorage.setItem("wishlist", JSON.stringify(newWishlist));
+    setWishlist(newWishlist);
   };
 
   return (
     <ThemeProvider>
-      <div className='flex h-screen bg-white dark:bg-darkgray-default'>
-        <div className='fixed h-full'>
-          {' '}
-          <NavigationMenu />{' '}
+      <div className="no-scroll flex h-full overflow-y-auto bg-white dark:bg-darkgray-default">
+        <div className="fixed h-full">
+          {" "}
+          <NavigationMenu />{" "}
         </div>
-        <div className='flex-1 flec-col ml-64'>
-          <div className='relative p-2 z-50'>
+        <div className="flex-1 flec-col ml-64">
+          <div className="relative p-2 z-50">
             <TopBar
               setCollection={setCollection}
               setWishlist={setWishlist}
               setFavorites={setFavorites}
             />
           </div>
-          <main className='flex-1 h-full bg-white dark:bg-darkgray-default p-4 overflow-y-auto'>
+          <main className="flex-1 h-full bg-white dark:bg-darkgray-default p-4 overflow-y-auto">
             <Switch>
-              <Route path='/Home'>
+              <Route path="/Home">
                 <Home />
               </Route>
-              <Route path='/Collection'>
+              <Route path="/Collection">
                 <Collection
                   collection={collection}
                   onRemoveFromCollection={onRemoveFromCollection}
                   albums={albums}
                 />
               </Route>
-              <Route path='/Wishlist'>
-                <Wishlist wishlist={wishlist} albums={albums} />
+              <Route path="/Wishlist">
+                <Wishlist
+                  wishlist={wishlist}
+                  onRemoveFromWishlist={onRemoveFromWishlist}
+                  albums={albums}
+                />
               </Route>
-              <Route path='/Favorites'>
+              <Route path="/Favorites">
                 <Favorites favorites={favorites} artists={artists} />
               </Route>
             </Switch>

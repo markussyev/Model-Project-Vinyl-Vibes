@@ -68,6 +68,12 @@ const handleRemoveFromWishlist = (album) => {
     });
   };
 
+  const handleUnsetLiked = (artist) => {
+    setFavorites((prevFavorites) => {
+      return prevFavorites.filter((prevArtist) => prevArtist.mbid !== artist.mbid);
+    });
+  };
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (resultsRef.current && !resultsRef.current.contains(event.target)) {
@@ -98,6 +104,7 @@ const handleRemoveFromWishlist = (album) => {
               onAddToWishlist={handleAddToWishlist}
               onRemoveFromWishlist={handleRemoveFromWishlist}
               onSetLiked={handleSetLiked}
+              onUnsetLiked={handleUnsetLiked}
             />
           </div>
         )}

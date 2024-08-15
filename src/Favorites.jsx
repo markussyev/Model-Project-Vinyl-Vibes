@@ -15,14 +15,15 @@ function Favorites({ favorites, setFavorites, artists }) {
   };
 
   return (
-    <div className="flex flex-col mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default">
+    <div className="no-scroll flex flex-col mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default">
       <div className="flex gap-10 pb-40">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-lightcoral-default">
           My
         </h1>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl dark:text-lightgray-default">Favorites</h1>
       </div>
-      {favorites
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-5 gap-10">
+        {favorites
         // .filter((artist) => favorites.includes(artist.id))
         .map((artist, id) => (
           <ArtistCard
@@ -33,6 +34,8 @@ function Favorites({ favorites, setFavorites, artists }) {
             handleSetLiked={() => handleSetLiked(artist)}
           />
         ))}
+        </div>
+      
     </div>
   );
 }

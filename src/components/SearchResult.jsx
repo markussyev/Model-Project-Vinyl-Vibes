@@ -10,6 +10,7 @@ const SearchResult = ({
   onAddToWishlist,
   onRemoveFromWishlist,
   onSetLiked,
+  onUnsetLiked,
 }) => {
   //create our ids cause the API is inconsistent
   result.mbid = uuidv4();
@@ -34,8 +35,9 @@ const SearchResult = ({
       <ArtistCard
         artistTitle={result.artistTitle}
         imgUrl={result.imageUrl}
-        liked={result.liked}
+        liked={result.liked !== undefined ? result.liked : false}
         handleSetLiked={() => onSetLiked(result)}
+        handleUnsetLiked={() => onUnsetLiked(result)}
       />
     );
   }

@@ -3,7 +3,7 @@ import AlbumCard from './components/AlbumCard';
 
 function Collection({ collection, onRemoveFromCollection }) {
   return (
-    <div className='flex flex-col mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default'>
+    <div className='no-scroll flex flex-col mt-20 h-screen gap-10 bg-white dark:bg-darkgray-default'>
       <div className='flex gap-10 pb-40'>
         <h1 className='text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-lightcoral-default'>
           My
