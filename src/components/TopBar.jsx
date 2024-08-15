@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTheme } from "../ThemeContext";
 import SearchBar from "./SearchBar";
 import SearchResultList from "./SearchResultsList";
@@ -57,6 +57,8 @@ const handleRemoveFromWishlist = (album) => {
 };
 
   const handleSetLiked = (artist) => {
+    console.log('adding artist to favs',artist);
+    
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(artist)) {
         return prevFavorites.filter((prevArtist) => prevArtist.mbid !== artist.mbid);

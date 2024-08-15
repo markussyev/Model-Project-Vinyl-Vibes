@@ -1,5 +1,5 @@
-import React from "react";
 import PropTypes from "prop-types";
+import React from "react";
 import { useTheme } from '../ThemeContext';
 import LikeButton from "./LikeButton";
 

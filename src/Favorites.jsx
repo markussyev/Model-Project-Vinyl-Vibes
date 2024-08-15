@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import ArtistCard from "./components/ArtistCard";
 
 function Favorites({ favorites, setFavorites, artists }) {
+  console.log('FAVS FAVS', favorites);
+
   const handleSetLiked = (artist) => {
     setFavorites((prevFavorites) => {
       if (prevFavorites.includes(artist.id)) {
@@ -20,14 +22,14 @@ function Favorites({ favorites, setFavorites, artists }) {
         </h1>
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl dark:text-lightgray-default">Favorites</h1>
       </div>
-      {artists
+      {favorites
         // .filter((artist) => favorites.includes(artist.id))
         .map((artist, id) => (
           <ArtistCard
             key={id}
             artistTitle={artist.artistTitle}
             imgUrl={artist.imageUrl}
-            liked={favorites.includes(artist.id)}
+            liked={favorites.includes(artist.mbid)}
             handleSetLiked={() => handleSetLiked(artist)}
           />
         ))}
